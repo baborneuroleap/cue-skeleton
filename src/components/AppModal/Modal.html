@@ -1,0 +1,46 @@
+<Dialog
+  v-model:visible="visible"
+  modal
+  header="Header"
+  :style="{ width: getWidth }"
+  :contentClass="type+ ' ' + modalClass"
+  :class="type + ' ' + 'app-dialog'"
+  :draggable="false"
+  :position="position"
+  @hide="handleCancel">
+  <template #header>
+    <div class="dialog-title">
+      <span v-if="titleIcon" class="k-icon" :class="titleIcon"></span>
+      <h3>{{ title }}</h3>
+    </div>
+  </template>
+
+  <div class="modal-wrap" autofocus>
+    <div class="content-inner" v-if="body">
+      <component
+        ref="bodyComponent"
+        v-if="renderComponent"
+        :is="body"
+        :modal-data="data"
+        :modalAction="modalAction"
+        :app-modal-attrs="this.$attrs">
+      </component>
+    </div>
+    <div v-else>
+      <span>{{ message }}</span>
+    </div>
+  </div>
+
+  <template #footer v-if="footer">
+    <component @cancel="handleCancel" @submit="handleSubmit" :is="footer" :data="data"></component>
+  </template>
+  <template #footer v-else>
+    <Button ref="cancelButton" :label="cancelButtonText" :disabled="loading" @click="handleCancel" />
+    <Button
+      ref="submitButton"
+      :label="submitButtonText"
+      v-if="!hideSubmitButton"
+      :disabled="loading || submitButtonDisabled"
+      @click="handleSubmit" />
+  </template>
+</Dialog>

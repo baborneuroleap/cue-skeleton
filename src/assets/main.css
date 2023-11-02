@@ -1,0 +1,29 @@
+/** theme - FOR PRIME-VUE **/
+@import "primevue/resources/themes/lara-light-indigo/theme.css";
+/** core - FOR PRIME-VUE **/
+@import "primevue/resources/primevue.min.css";
+/** prime icons - FOR PRIME-VUE **/
+@import 'primeicons/primeicons.css';
+
+body {
+    font-family: var(--font-family);
+}
+
+.p-dialog.dialog-right, .p-dialog.p-dialog.dialog-left {
+    height: 100vh;
+    max-height: 100vh;
+}
+.p-dialog.dialog-right {
+    margin-right: 0 !important;
+}
+.p-dialog.dialog-left {
+    margin-left: 0 !important;
+}
+.p-dialog-content.dialog-right, .p-dialog-content.dialog-left {
+    height: 100%;
+}
+
+.p-toast-top-center {
+    max-height: 40vh;
+    overflow: scroll;
+}

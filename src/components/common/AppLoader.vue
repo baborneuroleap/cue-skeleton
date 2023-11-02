@@ -1,0 +1,43 @@
+<template>
+	<div class="card flex justify-content-center loading-indicator">
+		<ProgressSpinner />
+	</div>
+</template>
+
+<script>
+import ProgressSpinner from 'primevue/progressspinner';
+
+export default {
+	name: "AppLoader",
+	
+	components: {
+		ProgressSpinner,
+	}
+}
+</script>
+
+<style scoped>
+.loading-indicator {
+	position: fixed;
+	z-index: 9999;
+	height: 2em;
+	width: 2em;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+/* Transparent Overlay */
+.loading-indicator:before {
+	content: '';
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.53);
+}
+</style>
